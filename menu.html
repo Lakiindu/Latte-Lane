@@ -1,1 +1,773 @@
-hello 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Latte Lane</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'coffee': {
+                            50: '#fdf8f3',
+                            100: '#f7ede2',
+                            200: '#eed9c5',
+                            300: '#e0ba9a',
+                            400: '#d0956b',
+                            500: '#c17a4a',
+                            600: '#b3653f',
+                            700: '#8B4513',
+                            800: '#6b3710',
+                            900: '#5a2e0e',
+                        }
+                    },
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #fef3c7;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #8B4513;
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b3710;
+        }
+        
+        ::selection {
+            background-color: rgba(139, 69, 19, 0.3);
+        }
+    </style>
+</head>
+<body class="font-poppins bg-gradient-to-b from-amber-50 to-amber-100">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 backdrop-blur-md bg-white/90 shadow-lg transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <span class="text-4xl animate-float">☕</span>
+                        <div class="absolute -top-1 -right-1 w-2 h-2 bg-coffee-500 rounded-full animate-pulse-slow"></div>
+                    </div>
+                    <a href="index.html" class="text-2xl md:text-3xl font-playfair font-bold text-coffee-900">Latte Lane</a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-8 items-center">
+                    <a href="index.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        Home
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="about.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="menu.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        Menu
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="offers.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        Offers
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="gallery.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        Gallery
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="contact.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        Contact
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="menu.html" class="ml-4 px-6 py-2 bg-gradient-to-r from-coffee-700 to-coffee-600 text-white rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                        Order Now
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <buttonid="mobile-toggle" class="lg:hidden text-coffee-900 p-2 rounded-lg hover:bg-amber-100 transition-colors duration-300">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="lg:hidden mt-4 max-h-0 overflow-hidden transition-all duration-500">
+                <div class="flex flex-col space-y-4 pb-4">
+                    <a href="index.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        Home
+                    </a>
+                    <a href="about.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        About
+                    </a>
+                    <a href="menu.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        Menu
+                    </a>
+                    <a href="offers.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        Offers
+                    </a>
+                    <a href="gallery.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        Gallery
+                    </a>
+                    <a href="contact.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        Contact
+                    </a>
+                    <a href="menu.html" class="mt-4 px-6 py-3 bg-gradient-to-r from-coffee-700 to-coffee-600 text-white rounded-full font-semibold text-center hover:shadow-lg transition-all duration-300">
+                        Order Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Page Header -->
+    <section class="relative py-20 lg:py-28 bg-gradient-to-r from-coffee-900 to-coffee-800 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1974" alt="Coffee" 
+                 class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-r from-coffee-900/90 to-coffee-800/80"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+                <div class="inline-block mb-6 px-6 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                    <span class="text-amber-200 font-semibold">Our Specialties</span>
+                </div>
+                <h1 class="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-white mb-8 leading-tight">
+                    Our Menu
+                </h1>
+                <p class="text-xl text-amber-100 max-w-3xl mx-auto leading-relaxed">
+                    Discover our selection of artisanal coffees and homemade pastries, crafted with passion and the finest ingredients.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Navigation -->
+    <section class="sticky top-20 z-40 bg-white/95 backdrop-blur-sm shadow-md py-4">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#coffee" class="px-6 py-3 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                    ☕ Coffee
+                </a>
+                <a href="#tea" class="px-6 py-3 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                    🍵 Tea
+                </a>
+                <a href="#pastries" class="px-6 py-3 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                    🥐 Pastries
+                </a>
+                <a href="#desserts" class="px-6 py-3 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                    🍰 Desserts
+                </a>
+                <a href="#sandwiches" class="px-6 py-3 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                    🥪 Sandwiches
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coffee Menu -->
+    <section id="coffee" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-center mb-12" data-aos="fade-up">
+                <div class="flex items-center">
+                    <div class="w-16 h-16 rounded-full bg-coffee-100 flex items-center justify-center mr-6">
+                        <span class="text-3xl">☕</span>
+                    </div>
+                    <h2 class="font-playfair text-4xl font-bold text-coffee-900">Coffee & Espresso</h2>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Coffee Item 1 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300" data-aos="fade-up">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-coffee-900">Classic Espresso</h3>
+                        <span class="text-2xl font-bold text-coffee-700">$3.50</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Rich, bold, and perfect for purists. Single-origin beans, expertly extracted.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-coffee-700 font-semibold">☕ Strong • 2 oz</span>
+                        <button class="px-4 py-2 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Coffee Item 2 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-coffee-900">Cappuccino</h3>
+                        <span class="text-2xl font-bold text-coffee-700">$4.50</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Smooth espresso with velvety foam and a dusting of cocoa powder.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-coffee-700 font-semibold">☕ Balanced • 6 oz</span>
+                        <button class="px-4 py-2 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Coffee Item 3 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-coffee-900">Caramel Latte</h3>
+                        <span class="text-2xl font-bold text-coffee-700">$5.00</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Sweet and creamy indulgence with house-made caramel sauce.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-coffee-700 font-semibold">☕ Sweet • 12 oz</span>
+                        <button class="px-4 py-2 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Coffee Item 4 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300" data-aos="fade-up">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-coffee-900">Mocha</h3>
+                        <span class="text-2xl font-bold text-coffee-700">$5.50</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Rich chocolate paired with espresso and steamed milk.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-coffee-700 font-semibold">☕ Chocolatey • 12 oz</span>
+                        <button class="px-4 py-2 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Coffee Item 5 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-coffee-900">Americano</h3>
+                        <span class="text-2xl font-bold text-coffee-700">$4.00</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Espresso diluted with hot water for a smooth, strong coffee.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-coffee-700 font-semibold">☕ Smooth • 8 oz</span>
+                        <button class="px-4 py-2 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Coffee Item 6 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-coffee-900">Cold Brew</h3>
+                        <span class="text-2xl font-bold text-coffee-700">$4.75</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Slow-steeped for 18 hours, served over ice.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-coffee-700 font-semibold">☕ Cold • 16 oz</span>
+                        <button class="px-4 py-2 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tea Menu -->
+    <section id="tea" class="py-20 bg-gradient-to-b from-amber-50 to-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-center mb-12" data-aos="fade-up">
+                <div class="flex items-center">
+                    <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mr-6">
+                        <span class="text-3xl">🍵</span>
+                    </div>
+                    <h2 class="font-playfair text-4xl font-bold text-coffee-900">Tea Selection</h2>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Tea Item 1 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300" data-aos="fade-up">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-coffee-900">Earl Grey</h3>
+                        <span class="text-2xl font-bold text-coffee-700">$3.75</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Classic black tea flavored with bergamot orange.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-coffee-700 font-semibold">🍵 Hot or Iced</span>
+                        <button class="px-4 py-2 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Tea Item 2 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-coffee-900">Green Tea</h3>
+                        <span class="text-2xl font-bold text-coffee-700">$3.50</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Japanese sencha green tea, light and refreshing.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-coffee-700 font-semibold">🍵 Antioxidant-rich</span>
+                        <button class="px-4 py-2 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pastries Menu -->
+    <section id="pastries" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-center mb-12" data-aos="fade-up">
+                <div class="flex items-center">
+                    <div class="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mr-6">
+                        <span class="text-3xl">🥐</span>
+                    </div>
+                    <h2 class="font-playfair text-4xl font-bold text-coffee-900">Pastries & Breads</h2>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Pastry Item 1 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300" data-aos="fade-up">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-coffee-900">Butter Croissant</h3>
+                        <span class="text-2xl font-bold text-coffee-700">$4.00</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Flaky, buttery perfection made fresh daily with French butter.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-coffee-700 font-semibold">🥐 Fresh Daily</span>
+                        <button class="px-4 py-2 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Pastry Item 2 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-coffee-900">Almond Croissant</h3>
+                        <span class="text-2xl font-bold text-coffee-700">$5.50</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Buttery croissant filled with almond cream, topped with sliced almonds.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-coffee-700 font-semibold">🥐 Sweet & Nutty</span>
+                        <button class="px-4 py-2 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Pastry Item 3 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-coffee-900">Blueberry Muffin</h3>
+                        <span class="text-2xl font-bold text-coffee-700">$3.75</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Moist muffin bursting with fresh blueberries and lemon zest.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-coffee-700 font-semibold">🧁 Fresh Berries</span>
+                        <button class="px-4 py-2 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Desserts Menu -->
+    <section id="desserts" class="py-20 bg-gradient-to-b from-amber-50 to-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-center mb-12" data-aos="fade-up">
+                <div class="flex items-center">
+                    <div class="w-16 h-16 rounded-full bg-pink-100 flex items-center justify-center mr-6">
+                        <span class="text-3xl">🍰</span>
+                    </div>
+                    <h2 class="font-playfair text-4xl font-bold text-coffee-900">Desserts</h2>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dessert Item 1 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300" data-aos="fade-up">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-coffee-900">Chocolate Cake</h3>
+                        <span class="text-2xl font-bold text-coffee-700">$6.50</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Decadent triple-layer chocolate delight with ganache frosting.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-coffee-700 font-semibold">🍰 Rich & Moist</span>
+                        <button class="px-4 py-2 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Dessert Item 2 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-coffee-900">NY Cheesecake</h3>
+                        <span class="text-2xl font-bold text-coffee-700">$7.00</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Classic creamy goodness with a graham cracker crust and berry compote.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-coffee-700 font-semibold">🍰 Creamy Classic</span>
+                        <button class="px-4 py-2 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Dessert Item 3 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-coffee-900">Tiramisu</h3>
+                        <span class="text-2xl font-bold text-coffee-700">$6.75</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Coffee-soaked ladyfingers layered with mascarpone cream.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-coffee-700 font-semibold">🍰 Coffee-infused</span>
+                        <button class="px-4 py-2 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sandwiches Menu -->
+    <section id="sandwiches" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-center mb-12" data-aos="fade-up">
+                <div class="flex items-center">
+                    <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mr-6">
+                        <span class="text-3xl">🥪</span>
+                    </div>
+                    <h2 class="font-playfair text-4xl font-bold text-coffee-900">Sandwiches</h2>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Sandwich Item 1 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300" data-aos="fade-up">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-coffee-900">Turkey & Avocado</h3>
+                        <span class="text-2xl font-bold text-coffee-700">$9.50</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Roasted turkey, fresh avocado, lettuce, tomato on whole grain.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-coffee-700 font-semibold">🥪 Healthy Choice</span>
+                        <button class="px-4 py-2 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Sandwich Item 2 -->
+                <div class="bg-white rounded-3xl shadow-lg p-6 hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-coffee-900">Caprese Panini</h3>
+                        <span class="text-2xl font-bold text-coffee-700">$8.75</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Fresh mozzarella, tomatoes, basil, and balsamic glaze on ciabatta.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-coffee-700 font-semibold">🥪 Vegetarian</span>
+                        <button class="px-4 py-2 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Summary -->
+    <section class="py-20 bg-gradient-to-b from-coffee-900 to-coffee-800">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-white mb-8">
+                    Ready to Order?
+                </h2>
+                <p class="text-xl text-amber-100 mb-10 max-w-2xl mx-auto">
+                    Visit us in person or call to place your order for pickup.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <a href="contact.html" 
+                       class="px-10 py-5 bg-white text-coffee-900 rounded-full font-semibold text-lg hover:bg-amber-100 transition-all duration-300 hover:scale-105">
+                        Call to Order
+                    </a>
+                    <a href="contact.html" 
+                       class="px-10 py-5 border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                        Visit Our Café
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-coffee-900 to-coffee-800 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-4 gap-10 mb-12">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <span class="text-4xl animate-float">☕</span>
+                        <h3 class="font-playfair text-3xl font-bold">Latte Lane</h3>
+                    </div>
+                    <p class="text-coffee-200 mb-6">
+                        Your neighborhood café where every cup tells a story, and every visit feels like coming home.
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="w-10 h-10 bg-coffee-700 rounded-full flex items-center justify-center">
+                            <span class="text-sm">⭐ 4.9</span>
+                        </div>
+                        <div class="w-10 h-10 bg-coffee-700 rounded-full flex items-center justify-center">
+                            <span>🏆</span>
+                        </div>
+                        <div class="w-10 h-10 bg-coffee-700 rounded-full flex items-center justify-center">
+                            <span>🌱</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6 pb-2 border-b border-coffee-700">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-coffee-200 hover:text-white transition-colors duration-300 flex items-center group">
+                            <div class="w-2 h-2 bg-amber-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            Home
+                        </a></li>
+                        <li><a href="about.html" class="text-coffee-200 hover:text-white transition-colors duration-300 flex items-center group">
+                            <div class="w-2 h-2 bg-amber-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            About Us
+                        </a></li>
+                        <li><a href="menu.html" class="text-coffee-200 hover:text-white transition-colors duration-300 flex items-center group">
+                            <div class="w-2 h-2 bg-amber-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            Menu
+                        </a></li>
+                        <li><a href="offers.html" class="text-coffee-200 hover:text-white transition-colors duration-300 flex items-center group">
+                            <div class="w-2 h-2 bg-amber-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            Offers
+                        </a></li>
+                        <li><a href="contact.html" class="text-coffee-200 hover:text-white transition-colors duration-300 flex items-center group">
+                            <div class="w-2 h-2 bg-amber-400 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            Contact
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <!-- Opening Hours -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6 pb-2 border-b border-coffee-700">Opening Hours</h4>
+                    <ul class="space-y-3">
+                        <li class="flex justify-between">
+                            <span class="text-coffee-200">Monday - Friday</span>
+                            <span class="font-semibold">7 AM - 8 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span class="text-coffee-200">Saturday</span>
+                            <span class="font-semibold">8 AM - 9 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span class="text-coffee-200">Sunday</span>
+                            <span class="font-semibold">8 AM - 9 PM</span>
+                        </li>
+                        <li class="pt-4 mt-4 border-t border-coffee-700">
+                            <p class="text-amber-300 text-sm">💡 Extended hours on holidays</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6 pb-2 border-b border-coffee-700">Stay Updated</h4>
+                    <p class="text-coffee-200 mb-6">
+                        Subscribe to our newsletter for exclusive offers, events, and coffee tips.
+                    </p>
+                    <div class="mb-6">
+                        <div class="flex">
+                            <input type="email" placeholder="Your email" 
+                                   class="px-5 py-3 rounded-l-2xl flex-1 text-coffee-900 focus:outline-none">
+                            <button class="bg-gradient-to-r from-amber-600 to-amber-500 px-6 py-3 rounded-r-2xl font-semibold hover:opacity-90 transition-opacity duration-300">
+                                Join
+                            </button>
+                        </div>
+                        <p class="text-coffee-300 text-xs mt-2">We respect your privacy. Unsubscribe anytime.</p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-coffee-700 rounded-full flex items-center justify-center hover:bg-coffee-600 hover:scale-110 transition-all duration-300">
+                            <span class="text-lg">📘</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-coffee-700 rounded-full flex items-center justify-center hover:bg-coffee-600 hover:scale-110 transition-all duration-300">
+                            <span class="text-lg">📷</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-coffee-700 rounded-full flex items-center justify-center hover:bg-coffee-600 hover:scale-110 transition-all duration-300">
+                            <span class="text-lg">🐦</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-coffee-700 rounded-full flex items-center justify-center hover:bg-coffee-600 hover:scale-110 transition-all duration-300">
+                            <span class="text-lg">📹</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="border-t border-coffee-700 pt-8 text-center">
+                <p class="text-coffee-300">
+                    &copy; 2024 Latte Lane. All rights reserved. Made with 
+                    <span class="inline-block animate-pulse">❤️</span> and 
+                    <span class="inline-block animate-float">☕</span>
+                </p>
+                <p class="text-coffee-400 text-sm mt-2">
+                    <a href="#" class="hover:text-amber-300 transition-colors duration-300">Privacy Policy</a> • 
+                    <a href="#" class="hover:text-amber-300 transition-colors duration-300">Terms of Service</a> • 
+                    <a href="#" class="hover:text-amber-300 transition-colors duration-300">Accessibility</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <buttonid="back-to-top" 
+            class="fixed bottom-8 right-8 w-12 h-12 bg-coffee-700 text-white rounded-full shadow-lg hover:bg-coffee-600 hover:scale-110 transition-all duration-300 opacity-0 translate-y-10">
+        <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileToggle.addEventListener('click', () => {
+            const isExpanded = mobileMenu.classList.contains('max-h-0');
+            mobileMenu.classList.toggle('max-h-0');
+            mobileMenu.classList.toggle('max-h-96');
+            
+            if (!isExpanded) {
+                mobileToggle.innerHTML = `
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                `;
+            } else {
+                mobileToggle.innerHTML = `
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                `;
+            }
+        });
+
+        // Smooth scroll for menu navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'translate-y-10');
+                backToTopButton.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'translate-y-0');
+                backToTopButton.classList.add('opacity-0', 'translate-y-10');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add to cart functionality
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('Add to Order')) {
+                button.addEventListener('click', function() {
+                    const item = this.closest('.bg-white');
+                    const itemName = item.querySelector('h3').textContent;
+                    const itemPrice = item.querySelector('.text-2xl').textContent;
+                    
+                    // Create notification
+                    const notification = document.createElement('div');
+                    notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-full shadow-lg z-50 animate-slide-in';
+                    notification.textContent = `Added ${itemName} to order!`;
+                    
+                    document.body.appendChild(notification);
+                    
+                    // Remove notification after 3 seconds
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 3000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
