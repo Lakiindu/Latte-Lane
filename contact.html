@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latte Lane - Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'coffee': {
+                            50: '#fdf8f3',
+                            100: '#f7ede2',
+                            200: '#eed9c5',
+                            300: '#e0ba9a',
+                            400: '#d0956b',
+                            500: '#c17a4a',
+                            600: '#b3653f',
+                            700: '#8B4513',
+                            800: '#6b3710',
+                            900: '#5a2e0e',
+                        }
+                    },
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #fef3c7;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #8B4513;
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b3710;
+        }
+        
+        ::selection {
+            background-color: rgba(139, 69, 19, 0.3);
+        }
+    </style>
+</head>
+<body class="font-poppins bg-gradient-to-b from-amber-50 to-amber-100">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 backdrop-blur-md bg-white/90 shadow-lg transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <span class="text-4xl animate-float">☕</span>
+                        <div class="absolute -top-1 -right-1 w-2 h-2 bg-coffee-500 rounded-full animate-pulse-slow"></div>
+                    </div>
+                    <a href="index.html" class="text-2xl md:text-3xl font-playfair font-bold text-coffee-900">Latte Lane</a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-8 items-center">
+                    <a href="index.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        Home
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="about.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="menu.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        Menu
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="offers.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        Offers
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="gallery.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        Gallery
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="contact.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        Contact
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="menu.html" class="ml-4 px-6 py-2 bg-gradient-to-r from-coffee-700 to-coffee-600 text-white rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                        Order Now
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <buttonid="mobile-toggle" class="lg:hidden text-coffee-900 p-2 rounded-lg hover:bg-amber-100 transition-colors duration-300">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="lg:hidden mt-4 max-h-0 overflow-hidden transition-all duration-500">
+                <div class="flex flex-col space-y-4 pb-4">
+                    <a href="index.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        Home
+                    </a>
+                    <a href="about.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        About
+                    </a>
+                    <a href="menu.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        Menu
+                    </a>
+                    <a href="offers.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        Offers
+                    </a>
+                    <a href="gallery.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        Gallery
+                    </a>
+                    <a href="contact.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        Contact
+                    </a>
+                    <a href="menu.html" class="mt-4 px-6 py-3 bg-gradient-to-r from-coffee-700 to-coffee-600 text-white rounded-full font-semibold text-center hover:shadow-lg transition-all duration-300">
+                        Order Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Page Header -->
+    <section class="relative py-20 lg:py-28 bg-gradient-to-r from-coffee-900 to-coffee-800 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1445077100181-a33e9ac94db0?q=80&w=2070" alt="Coffee" 
+                 class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-r from-coffee-900/90 to-coffee-800/80"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+                <div class="inline-block mb-6 px-6 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                    <span class="text-amber-200 font-semibold">Get in Touch</span>
+                </div>
+                <h1 class="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-white mb-8 leading-tight">
+                    Contact Us
+                </h1>
+                <p class="text-xl text-amber-100 max-w-3xl mx-auto leading-relaxed">
+                    We'd love to hear from you! Visit our café or reach out to us.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 lg:py-28 bg-white relative overflow-hidden">
+        <div class="absolute -top-20 right-1/4 w-96 h-96 bg-coffee-50 rounded-full opacity-30"></div>
+        
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <!-- Contact Info -->
+                <div data-aos="fade-right">
+                    <div class="bg-gradient-to-br from-amber-50 to-white rounded-3xl p-8 shadow-lg mb-8">
+                        <h3 class="text-2xl font-bold text-coffee-900 mb-6 flex items-center">
+                            <span class="mr-3">📍</span> Location
+                        </h3>
+                        <p class="text-gray-700 mb-2 text-lg">123 Coffee Street, Colombo</p>
+                        <p class="text-gray-700 mb-6 text-lg">Sri Lanka, 12345</p>
+                        
+                        <!-- Google Maps Embed -->
+<div class="h-64 rounded-2xl overflow-hidden mb-6">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.888210229349!2d79.97234581531018!3d6.910897695037612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25766c3c983e3%3A0xfe17103d14f7a963!2s124%2FF%2F6%20Nissin%20Residence!5e0!3m2!1sen!2slk!4v1691820689934!5m2!1sen!2slk"
+        width="100%" 
+        height="100%" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"
+        class="rounded-2xl"
+        title="Latte Lane Location Map"
+        aria-label="Interactive map showing Latte Lane location">
+    </iframe>
+</div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <a href="#" class="p-3 bg-coffee-100 text-coffee-700 rounded-full hover:bg-coffee-200 transition-colors duration-300">
+                                Get Directions
+                            </a>
+                            <a href="#" class="p-3 bg-amber-100 text-amber-700 rounded-full hover:bg-amber-200 transition-colors duration-300">
+                                Parking Info
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="bg-gradient-to-br from-amber-50 to-white rounded-3xl p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="200">
+                            <h4 class="text-xl font-bold text-coffee-900 mb-4 flex items-center">
+                                <span class="mr-2">🕐</span> Hours
+                            </h4>
+                            <div class="space-y-2">
+                                <p class="text-gray-700"><span class="font-semibold">Monday-Friday:</span>7AM - 8PM</p>
+                                <p class="text-gray-700"><span class="font-semibold">Saturday:</span> 8 AM - 8 PM</p>
+                                <p class="text-gray-700"><span class="font-semibold">Sunday:</span> 10 AM - 8 PM</p>
+                    
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-amber-50 to-white rounded-3xl p-6 shadow-lg" data-aos="zoom-in" data-aos-delay="300">
+                            <h4 class="text-xl font-bold text-coffee-900 mb-4 flex items-center">
+                                <span class="mr-2">📞</span> Contact
+                            </h4>
+                            <div class="space-y-2">
+                                <p class="text-gray-700">(076) 561-4545</p>
+                                <p class="text-gray-700">hello@lattelane.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Section -->
+                    <div class="mt-8 bg-gradient-to-br from-coffee-50 to-white rounded-3xl p-8 shadow-lg" data-aos="fade-up" data-aos-delay="400">
+                        <h4 class="text-xl font-bold text-coffee-900 mb-6 flex items-center">
+                            <span class="mr-2">❓</span> Frequently Asked Questions
+                        </h4>
+                        <div class="space-y-4">
+                            <div class="border-b border-coffee-100 pb-4">
+                                <p class="font-semibold text-coffee-900 mb-2">Do you offer catering?</p>
+                                <p class="text-gray-600 text-sm">Yes! We provide catering for events of all sizes.</p>
+                            </div>
+                            <div class="border-b border-coffee-100 pb-4">
+                                <p class="font-semibold text-coffee-900 mb-2">Is there Wi-Fi available?</p>
+                                <p class="text-gray-600 text-sm">Free high-speed Wi-Fi is available for all customers.</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-coffee-900 mb-2">Do you have parking?</p>
+                                <p class="text-gray-600 text-sm">Street parking and nearby parking lots are available.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div data-aos="fade-left">
+                    <div class="bg-gradient-to-br from-white to-amber-50 rounded-3xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-coffee-900 mb-8">Send us a message</h3>
+                        <form class="space-y-6">
+                            <div class="grid sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-3">First Name</label>
+                                    <input type="text" 
+                                           class="w-full px-5 py-4 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-coffee-500 focus:border-transparent transition-all duration-300"
+                                           placeholder="Lakindu">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-3">Last Name</label>
+                                    <input type="text" 
+                                           class="w-full px-5 py-4 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-coffee-500 focus:border-transparent transition-all duration-300"
+                                           placeholder="Ransika">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-3">Email Address</label>
+                                <input type="email" 
+                                       class="w-full px-5 py-4 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-coffee-500 focus:border-transparent transition-all duration-300"
+                                       placeholder="lakindu@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-3">Phone Number</label>
+                                <input type="tel" 
+                                       class="w-full px-5 py-4 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-coffee-500 focus:border-transparent transition-all duration-300"
+                                       placeholder="(075) 561-4545">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-3">Subject</label>
+                                <selectclass="w-full px-5 py-4 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-coffee-500 focus:border-transparent transition-all duration-300">
+                                    <option>General Inquiry</option>
+                                    <option>Catering Request</option>
+                                    <option>Private Event</option>
+                                    <option>Feedback</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-3">Message</label>
+                                <textarea rows="5" 
+                                          class="w-full px-5 py-4 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-coffee-500 focus:border-transparent transition-all duration-300"
+                                          placeholder="Your message..."></textarea>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="newsletter" class="mr-3">
+                                <label for="newsletter" class="text-gray-700">Subscribe to our newsletter for updates</label>
+                            </div>
+                            <button type="submit" 
+                                    class="w-full px-8 py-5 bg-gradient-to-r from-coffee-700 to-coffee-600 text-white rounded-2xl font-semibold text-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                                        
+                    <!-- Emergency Contact -->
+                    <div class="mt-8 bg-gradient-to-r from-amber-50 to-coffee-50 rounded-3xl p-6 shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                        <h4 class="text-xl font-bold text-coffee-900 mb-4 flex items-center">
+                            <span class="mr-2">⚠️</span> For Urgent Matters
+                        </h4>
+                        <p class="text-gray-700 mb-2">For time-sensitive issues, please call:</p>
+                        <p class="text-2xl font-bold text-coffee-700 mb-2">(076) 561-4545</p>
+                        <p class="text-gray-600 text-sm">Available during business hours only</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- ModernFooter -->
+<footer class="bg-gradient-to-br from-coffee-900 to-coffee-800 text-white pt-16 pb-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Main Content -->
+        <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-12 pb-16">
+            
+            <!-- Brand Section -->
+            <div class="lg:col-span-1">
+                <div class="flex items-center space-x-4 mb-8">
+                    <div class="relative">
+                        <div class="w-14 h-14 bg-gradient-to-br from-red-600 to-red-800 rounded-2xl flex items-center justify-center shadow-lg shadow-Red-600/20">
+                            <span class="text-4xl animate-float">☕</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-3xl bg-gradient-to-r from-white to-red-400 bg-clip-text text-transparent">
+                            Latte Lane       
+                        </h2>
+                        <p class="text-xs text-gray-400 font-medium tracking-wider">SINCE 2020</p>
+                    </div>
+                </div>
+                
+                <p class="text-gray-300 mb-8 leading-relaxed text-lg">
+                    Your neighborhood café where every cup tells a story, and every visit feels like coming home.
+                </p>
+                
+                <!-- Social Media -->
+<div>
+    <p class="text-gray-300 mb-4 font-medium">Follow Our Journey</p>
+    <div class="flex space-x-3">
+        <a href="https://www.facebook.com/share/1DqCn5Ubdz/" target="_blank" rel="noopener noreferrer"
+           class="w-12 h-12 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl flex items-center justify-center hover:bg-blue-600/20 hover:border-blue-600 hover:scale-105 transition-all duration-300 group"
+           aria-label="Visit our Facebook page" title="Facebook">
+            <i class="fab fa-facebook-f text-xl group-hover:scale-110 transition-transform duration-300" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.instagram.com/_.lakiyaaa?igsh=MXA5MGs5ZXJsaHFiaQ==" target="_blank" rel="noopener noreferrer"
+           class="w-12 h-12 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl flex items-center justify-center hover:bg-pink-600/20 hover:border-pink-600 hover:scale-105 transition-all duration-300 group"
+           aria-label="Visit our Instagram profile" title="Instagram">
+            <i class="fab fa-instagram text-xl group-hover:scale-110 transition-transform duration-300" aria-hidden="true"></i>
+        </a>
+        <a href="https://wa.me/qr/5KU4P7OCDNLDG1" target="_blank" rel="noopener noreferrer"
+           class="w-12 h-12 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl flex items-center justify-center hover:bg-green-600/20 hover:border-green-600 hover:scale-105 transition-all duration-300 group"
+           aria-label="Chat with us on WhatsApp" title="WhatsApp">
+            <i class="fab fa-whatsapp text-xl group-hover:scale-110 transition-transform duration-300" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.youtube.com/@LakinduRansika-sw2mc" target="_blank" rel="noopener noreferrer"
+           class="w-12 h-12 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl flex items-center justify-center hover:bg-red-600/20 hover:border-red-600 hover:scale-105 transition-all duration-300 group"
+           aria-label="Visit our YouTube channel" title="YouTube">
+            <i class="fab fa-youtube text-xl group-hover:scale-110 transition-transform duration-300" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold mb-8 pb-3 border-b border-gray-800 relative">
+                    <span class="relative text-white">
+                        Quick links
+                        <span class="absolute -bottom-3 left-0 w-10 h-0.5 bg-red-500"></span>
+                    </span>
+                </h3>
+                <ul class="space-y-4">
+                    <li>
+                        <a href="index.html" class="group flex items-center text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-red-500 mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="group-hover:font-medium">🏠 Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.html" class="group flex items-center text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-red-500 mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="group-hover:font-medium">👥 About</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="menu.html" class="group flex items-center text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-red-500 mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="group-hover:font-medium">☕ Menu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="offers.html" class="group flex items-center text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-red-500 mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="group-hover:font-medium">🔥 Offers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="gallery.html" class="group flex items-center text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-red-500 mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="group-hover:font-medium">📸 Gallery</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="group flex items-center text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-red-500 mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="group-hover:font-medium">📞 Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h3 class="text-lg font-semibold mb-8 pb-3 border-b border-gray-800 relative">
+                    <span class="relative text-white">
+                        Contact Us
+                        <span class="absolute -bottom-3 left-0 w-10 h-0.5 bg-red-500"></span>
+                    </span>
+                </h3>
+                
+                <div class="space-y-6">
+                    <!-- Contact Card -->
+<div>
+    <h4 class="font-medium mb-4 text-red-100">Get In Touch</h4>
+    <div class="space-y-4">
+        <div class="flex items-center space-x-3 text-gray-300">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center">
+                <i class="fas fa-envelope text-black-400"></i>
+            </div>
+            <div>
+                <p class="text-sm font-medium">Email</p>
+                <p class="text-sm text-gray-400">support@LatteLane.com</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-3 text-gray-300">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center">
+                <i class="fas fa-phone-alt text-black-400"></i>
+            </div>
+            <div>
+                <p class="text-sm font-medium">Phone</p>
+                <p class="text-sm text-gray-400">076-561-4545</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-3 text-gray-300">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center">
+                <i class="fas fa-map-marker-alt text-black-400"></i>
+            </div>
+            <div>
+                <p class="text-sm font-medium">Location</p>
+                <p class="text-sm text-gray-400">Colombo, Sri Lanka</p>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 pt-4">
+        <p class="text-black-300 text-sm flex items-center">
+            <span class="w-2 h-2 bg-red-400 rounded-full mr-2 animate-pulse"></span>
+            24/7 Support Available
+        </p>
+    </div>
+</div>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div>
+                <h3 class="text-lg font-semibold mb-8 pb-3 border-b border-gray-800 relative">
+                    <span class="relative text-white">
+                        Newsletter
+                        <span class="absolute -bottom-3 left-0 w-10 h-0.5 bg-red-500"></span>
+                    </span>
+                </h3>
+                
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    Get the latest updates, special coffee offers, and fresh brews delivered straight to your inbox.
+                </p>
+                
+<div class="mb-6">
+                        <div class="flex">
+                            <input type="email" placeholder="Your email" 
+                                   class="px-5 py-3 rounded-l-2xl flex-1 text-coffee-900 focus:outline-none">
+                            <button class="bg-gradient-to-r from-amber-600 to-amber-500 px-4 py-2 rounded-r-2xl font-semibold hover:opacity-90 transition-opacity duration-300">
+                                Subscribe
+                            </button>
+                        </div>
+                        <p class="text-coffee-300 text-sm mt-2">By Subscribing, you agree to our Privacy Policy. Unsubscribe at any time.</p>
+                    </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="border-t border-coffee-700 pt-8 text-center">
+                <p class="text-coffee-300">
+                    &copy; 2020 Latte Lane. All rights reserved.
+                </p>
+                <p class="text-coffee-400 text-sm mt-2">
+                    <a href="menu.html" class="hover:text-amber-300 transition-colors duration-300">Orders</a> •  
+                    <a href="offers.html" class="hover:text-amber-300 transition-colors duration-300">Terms of Service</a> •  
+                    <a href="contact.html" class="hover:text-amber-300 transition-colors duration-300">Site Map</a>
+                </p>
+            </div>
+    </div>
+</footer>
+
+<!-- Font Awesome Icons (Add this to your head if not already included) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Back to Top Button -->
+    <buttonid="back-to-top" 
+            class="fixed bottom-8 right-8 w-12 h-12 bg-coffee-700 text-white rounded-full shadow-lg hover:bg-coffee-600 hover:scale-110 transition-all duration-300 opacity-0 translate-y-10">
+        <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileToggle.addEventListener('click', () => {
+            const isExpanded = mobileMenu.classList.contains('max-h-0');
+            mobileMenu.classList.toggle('max-h-0');
+            mobileMenu.classList.toggle('max-h-96');
+            
+            if (!isExpanded) {
+                mobileToggle.innerHTML = `
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                `;
+            } else {
+                mobileToggle.innerHTML = `
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                `;
+            }
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'translate-y-10');
+                backToTopButton.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'translate-y-0');
+                backToTopButton.classList.add('opacity-0', 'translate-y-10');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

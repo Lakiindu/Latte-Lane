@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latte Lane - Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'coffee': {
+                            50: '#fdf8f3',
+                            100: '#f7ede2',
+                            200: '#eed9c5',
+                            300: '#e0ba9a',
+                            400: '#d0956b',
+                            500: '#c17a4a',
+                            600: '#b3653f',
+                            700: '#8B4513',
+                            800: '#6b3710',
+                            900: '#5a2e0e',
+                        }
+                    },
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #fef3c7;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #8B4513;
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b3710;
+        }
+        
+        ::selection {
+            background-color: rgba(139, 69, 19, 0.3);
+        }
+    </style>
+</head>
+<body class="font-poppins bg-gradient-to-b from-amber-50 to-amber-100">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 backdrop-blur-md bg-white/90 shadow-lg transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <span class="text-4xl animate-float">☕</span>
+                        <div class="absolute -top-1 -right-1 w-2 h-2 bg-coffee-500 rounded-full animate-pulse-slow"></div>
+                    </div>
+                    <a href="index.html" class="text-2xl md:text-3xl font-playfair font-bold text-coffee-900">Latte Lane</a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-8 items-center">
+                    <a href="index.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        Home
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="about.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="menu.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        Menu
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="offers.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        Offers
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="gallery.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        Gallery
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="contact.html" class="text-coffee-900 hover:text-coffee-700 font-medium transition-all duration-300 relative group">
+                        Contact
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-coffee-700 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="menu.html" class="ml-4 px-6 py-2 bg-gradient-to-r from-coffee-700 to-coffee-600 text-white rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300">
+                        Order Now
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <buttonid="mobile-toggle" class="lg:hidden text-coffee-900 p-2 rounded-lg hover:bg-amber-100 transition-colors duration-300">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="lg:hidden mt-4 max-h-0 overflow-hidden transition-all duration-500">
+                <div class="flex flex-col space-y-4 pb-4">
+                    <a href="index.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        Home
+                    </a>
+                    <a href="about.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        About
+                    </a>
+                    <a href="menu.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        Menu
+                    </a>
+                    <a href="offers.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        Offers
+                    </a>
+                    <a href="gallery.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        Gallery
+                    </a>
+                    <a href="contact.html" class="flex items-center text-coffee-900 hover:text-coffee-700 py-2 px-4 rounded-lg hover:bg-amber-50 transition-colors duration-300 group">
+                        <div class="w-1 h-6 bg-coffee-700 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        Contact
+                    </a>
+                    <a href="menu.html" class="mt-4 px-6 py-3 bg-gradient-to-r from-coffee-700 to-coffee-600 text-white rounded-full font-semibold text-center hover:shadow-lg transition-all duration-300">
+                        Order Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Gallery Page Header -->
+    <section class="relative py-20 lg:py-28 bg-gradient-to-r from-coffee-900 to-coffee-800 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070" alt="Coffee shop" 
+                 class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-r from-coffee-900/90 to-coffee-800/80"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+                <div class="inline-block mb-6 px-6 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                    <span class="text-amber-200 font-semibold">Behind the Scenes</span>
+                </div>
+                <h1 class="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-white mb-8 leading-tight">
+                    Our Gallery
+                </h1>
+                <p class="text-xl text-amber-100 max-w-3xl mx-auto leading-relaxed">
+                    Take a peek inside our cozy café, meet our baristas, and see what makes Latte Lane special.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Filter -->
+    <section class="py-10 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up">
+                <button class="px-6 py-3 bg-gradient-to-r from-coffee-700 to-coffee-600 text-white rounded-full font-semibold">
+                    All Photos
+                </button>
+                <button class="px-6 py-3 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                    Café Interior
+                </button>
+                <button class="px-6 py-3 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                    Coffee Art
+                </button>
+                <button class="px-6 py-3 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                    Pastries
+                </button>
+                <button class="px-6 py-3 bg-coffee-100 text-coffee-700 rounded-full font-semibold hover:bg-coffee-200 transition-colors duration-300">
+                    Events
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="py-20 bg-gradient-to-b from-amber-50 to-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item relative overflow-hidden rounded-3xl group" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1974" alt="Coffee Art" 
+                         class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-white font-semibold text-xl mb-2">Latte Art Masterpiece</p>
+                            <p class="text-amber-100 text-sm">Our barista creating beautiful designs</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item relative overflow-hidden rounded-3xl group" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=2070" alt="Interior" 
+                         class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-white font-semibold text-xl mb-2">Cozy Interior</p>
+                            <p class="text-amber-100 text-sm">Our comfortable seating area</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item relative overflow-hidden rounded-3xl group" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=2070" alt="Drinks" 
+                         class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-white font-semibold text-xl mb-2">Signature Drinks</p>
+                            <p class="text-amber-100 text-sm">Our special menu items</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item relative overflow-hidden rounded-3xl group" data-aos="fade-up" data-aos-delay="50">
+                    <img src="https://images.unsplash.com/photo-1445077100181-a33e9ac94db0?q=80&w=2070" alt="Pastries" 
+                         class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-white font-semibold text-xl mb-2">Fresh Pastries</p>
+                            <p class="text-amber-100 text-sm">Made fresh daily</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item relative overflow-hidden rounded-3xl group" data-aos="fade-up" data-aos-delay="150">
+                    <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071" alt="Barista" 
+                         class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-white font-semibold text-xl mb-2">Expert Baristas</p>
+                            <p class="text-amber-100 text-sm">Our skilled coffee artists</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item relative overflow-hidden rounded-3xl group" data-aos="fade-up" data-aos-delay="250">
+                    <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1974" alt="Coffee Beans" 
+                         class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-white font-semibold text-xl mb-2">Premium Beans</p>
+                            <p class="text-amber-100 text-sm">Sourced from sustainable farms</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 7 -->
+                <div class="gallery-item relative overflow-hidden rounded-3xl group" data-aos="fade-up" data-aos-delay="75">
+                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=2070" alt="Seating" 
+                         class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-white font-semibold text-xl mb-2">Comfy Seating</p>
+                            <p class="text-amber-100 text-sm">Perfect for relaxing</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 8 -->
+                <div class="gallery-item relative overflow-hidden rounded-3xl group" data-aos="fade-up" data-aos-delay="175">
+                    <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=2061" alt="Desserts" 
+                         class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-white font-semibold text-xl mb-2">Dessert Display</p>
+                            <p class="text-amber-100 text-sm">Tempting treats</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 9 -->
+                <div class="gallery-item relative overflow-hidden rounded-3xl group" data-aos="fade-up" data-aos-delay="275">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047" alt="Café Space" 
+                         class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-white font-semibold text-xl mb-2">Our Café Space</p>
+                            <p class="text-amber-100 text-sm">Warm and inviting atmosphere</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Photos -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <div class="inline-block mb-4 px-4 py-1 bg-amber-100 text-coffee-700 rounded-full text-sm font-semibold">
+                    Customer Photos
+                </div>
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-coffee-900 mb-6">
+                    #LatteLaneMoments
+                </h2>
+                <p class="text-gray-700 text-lg">
+                    See how our customers enjoy their time at Latte Lane
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Customer Photo 1 -->
+                <div class="relative overflow-hidden rounded-2xl group" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=2070" alt="Customer 1" 
+                         class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-semibold">@coffeelover</span>
+                    </div>
+                </div>
+                
+                <!-- Customer Photo 2 -->
+                <div class="relative overflow-hidden rounded-2xl group" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047" alt="Customer 2" 
+                         class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-semibold">@bookandbrew</span>
+                    </div>
+                </div>
+                
+                <!-- Customer Photo 3 -->
+                <div class="relative overflow-hidden rounded-2xl group" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1974" alt="Customer 3" 
+                         class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-semibold">@javajourney</span>
+                    </div>
+                </div>
+                
+                <!-- Customer Photo 4 -->
+                <div class="relative overflow-hidden rounded-2xl group" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=2070" alt="Customer 4" 
+                         class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-semibold">@cafechronicles</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Instagram CTA -->
+            <div class="text-center mt-16" data-aos="fade-up">
+                <p class="text-gray-700 mb-6 text-lg">Share your Latte Lane moments with #LatteLaneMoments</p>
+                <a href="#" 
+                   class="inline-flex items-center px-10 py-4 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-full font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300">
+                    <span class="mr-3">📷</span>
+                    Follow @Latte Lane Cafe
+                </a>
+            </div>
+        </div>
+    </section>
+
+<!-- ModernFooter -->
+<footer class="bg-gradient-to-br from-coffee-900 to-coffee-800 text-white pt-16 pb-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Main Content -->
+        <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-12 pb-16">
+            
+            <!-- Brand Section -->
+            <div class="lg:col-span-1">
+                <div class="flex items-center space-x-4 mb-8">
+                    <div class="relative">
+                        <div class="w-14 h-14 bg-gradient-to-br from-red-600 to-red-800 rounded-2xl flex items-center justify-center shadow-lg shadow-Red-600/20">
+                            <span class="text-4xl animate-float">☕</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-3xl bg-gradient-to-r from-white to-red-400 bg-clip-text text-transparent">
+                            Latte Lane       
+                        </h2>
+                        <p class="text-xs text-gray-400 font-medium tracking-wider">SINCE 2020</p>
+                    </div>
+                </div>
+                
+                <p class="text-gray-300 mb-8 leading-relaxed text-lg">
+                    Your neighborhood café where every cup tells a story, and every visit feels like coming home.
+                </p>
+                
+                <!-- Social Media -->
+<div>
+    <p class="text-gray-300 mb-4 font-medium">Follow Our Journey</p>
+    <div class="flex space-x-3">
+        <a href="https://www.facebook.com/share/1DqCn5Ubdz/" target="_blank" rel="noopener noreferrer"
+           class="w-12 h-12 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl flex items-center justify-center hover:bg-blue-600/20 hover:border-blue-600 hover:scale-105 transition-all duration-300 group"
+           aria-label="Visit our Facebook page" title="Facebook">
+            <i class="fab fa-facebook-f text-xl group-hover:scale-110 transition-transform duration-300" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.instagram.com/_.lakiyaaa?igsh=MXA5MGs5ZXJsaHFiaQ==" target="_blank" rel="noopener noreferrer"
+           class="w-12 h-12 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl flex items-center justify-center hover:bg-pink-600/20 hover:border-pink-600 hover:scale-105 transition-all duration-300 group"
+           aria-label="Visit our Instagram profile" title="Instagram">
+            <i class="fab fa-instagram text-xl group-hover:scale-110 transition-transform duration-300" aria-hidden="true"></i>
+        </a>
+        <a href="https://wa.me/qr/5KU4P7OCDNLDG1" target="_blank" rel="noopener noreferrer"
+           class="w-12 h-12 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl flex items-center justify-center hover:bg-green-600/20 hover:border-green-600 hover:scale-105 transition-all duration-300 group"
+           aria-label="Chat with us on WhatsApp" title="WhatsApp">
+            <i class="fab fa-whatsapp text-xl group-hover:scale-110 transition-transform duration-300" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.youtube.com/@LakinduRansika-sw2mc" target="_blank" rel="noopener noreferrer"
+           class="w-12 h-12 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl flex items-center justify-center hover:bg-red-600/20 hover:border-red-600 hover:scale-105 transition-all duration-300 group"
+           aria-label="Visit our YouTube channel" title="YouTube">
+            <i class="fab fa-youtube text-xl group-hover:scale-110 transition-transform duration-300" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold mb-8 pb-3 border-b border-gray-800 relative">
+                    <span class="relative text-white">
+                        Quick links
+                        <span class="absolute -bottom-3 left-0 w-10 h-0.5 bg-red-500"></span>
+                    </span>
+                </h3>
+                <ul class="space-y-4">
+                    <li>
+                        <a href="index.html" class="group flex items-center text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-red-500 mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="group-hover:font-medium">🏠 Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.html" class="group flex items-center text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-red-500 mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="group-hover:font-medium">👥 About</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="menu.html" class="group flex items-center text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-red-500 mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="group-hover:font-medium">☕ Menu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="offers.html" class="group flex items-center text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-red-500 mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="group-hover:font-medium">🔥 Offers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="gallery.html" class="group flex items-center text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-red-500 mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="group-hover:font-medium">📸 Gallery</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="group flex items-center text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-red-500 mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="group-hover:font-medium">📞 Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h3 class="text-lg font-semibold mb-8 pb-3 border-b border-gray-800 relative">
+                    <span class="relative text-white">
+                        Contact Us
+                        <span class="absolute -bottom-3 left-0 w-10 h-0.5 bg-red-500"></span>
+                    </span>
+                </h3>
+                
+                <div class="space-y-6">
+                    <!-- Contact Card -->
+<div>
+    <h4 class="font-medium mb-4 text-red-100">Get In Touch</h4>
+    <div class="space-y-4">
+        <div class="flex items-center space-x-3 text-gray-300">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center">
+                <i class="fas fa-envelope text-black-400"></i>
+            </div>
+            <div>
+                <p class="text-sm font-medium">Email</p>
+                <p class="text-sm text-gray-400">support@LatteLane.com</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-3 text-gray-300">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center">
+                <i class="fas fa-phone-alt text-black-400"></i>
+            </div>
+            <div>
+                <p class="text-sm font-medium">Phone</p>
+                <p class="text-sm text-gray-400">076-561-4545</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-3 text-gray-300">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center">
+                <i class="fas fa-map-marker-alt text-black-400"></i>
+            </div>
+            <div>
+                <p class="text-sm font-medium">Location</p>
+                <p class="text-sm text-gray-400">Colombo, Sri Lanka</p>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 pt-4">
+        <p class="text-black-300 text-sm flex items-center">
+            <span class="w-2 h-2 bg-red-400 rounded-full mr-2 animate-pulse"></span>
+            24/7 Support Available
+        </p>
+    </div>
+</div>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div>
+                <h3 class="text-lg font-semibold mb-8 pb-3 border-b border-gray-800 relative">
+                    <span class="relative text-white">
+                        Newsletter
+                        <span class="absolute -bottom-3 left-0 w-10 h-0.5 bg-red-500"></span>
+                    </span>
+                </h3>
+                
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    Get the latest updates, special coffee offers, and fresh brews delivered straight to your inbox.
+                </p>
+                
+<div class="mb-6">
+                        <div class="flex">
+                            <input type="email" placeholder="Your email" 
+                                   class="px-5 py-3 rounded-l-2xl flex-1 text-coffee-900 focus:outline-none">
+                            <button class="bg-gradient-to-r from-amber-600 to-amber-500 px-4 py-2 rounded-r-2xl font-semibold hover:opacity-90 transition-opacity duration-300">
+                                Subscribe
+                            </button>
+                        </div>
+                        <p class="text-coffee-300 text-sm mt-2">By Subscribing, you agree to our Privacy Policy. Unsubscribe at any time.</p>
+                    </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="border-t border-coffee-700 pt-8 text-center">
+                <p class="text-coffee-300">
+                    &copy; 2020 Latte Lane. All rights reserved.
+                </p>
+                <p class="text-coffee-400 text-sm mt-2">
+                    <a href="menu.html" class="hover:text-amber-300 transition-colors duration-300">Orders</a> •  
+                    <a href="offers.html" class="hover:text-amber-300 transition-colors duration-300">Terms of Service</a> •  
+                    <a href="contact.html" class="hover:text-amber-300 transition-colors duration-300">Site Map</a>
+                </p>
+            </div>
+    </div>
+</footer>
+
+<!-- Font Awesome Icons (Add this to your head if not already included) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Back to Top Button -->
+    <buttonid="back-to-top" 
+            class="fixed bottom-8 right-8 w-12 h-12 bg-coffee-700 text-white rounded-full shadow-lg hover:bg-coffee-600 hover:scale-110 transition-all duration-300 opacity-0 translate-y-10">
+        <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileToggle.addEventListener('click', () => {
+            const isExpanded = mobileMenu.classList.contains('max-h-0');
+            mobileMenu.classList.toggle('max-h-0');
+            mobileMenu.classList.toggle('max-h-96');
+            
+            if (!isExpanded) {
+                mobileToggle.innerHTML = `
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                `;
+            } else {
+                mobileToggle.innerHTML = `
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                `;
+            }
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'translate-y-10');
+                backToTopButton.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'translate-y-0');
+                backToTopButton.classList.add('opacity-0', 'translate-y-10');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Gallery filter functionality
+        document.querySelectorAll('.gallery-filter button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.gallery-filter button').forEach(btn => {
+                    btn.classList.remove('bg-gradient-to-r', 'from-coffee-700', 'to-coffee-600', 'text-white');
+                    btn.classList.add('bg-coffee-100', 'text-coffee-700');
+                });
+                
+                // Add active class to clicked button
+                this.classList.remove('bg-coffee-100', 'text-coffee-700');
+                this.classList.add('bg-gradient-to-r', 'from-coffee-700', 'to-coffee-600', 'text-white');
+            });
+        });
+    </script>
+</body>
+</html>
